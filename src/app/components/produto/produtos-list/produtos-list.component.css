@@ -1,0 +1,19 @@
+table {
+  width: 100%;
+}
+.edit {
+  margin-right: 10px;
+}
+.edit > i {
+  color: #d9cd26;
+}
+.delete{
+  margin-left: 10px;
+}
+.addProduto{
+  size: 500px;
+  margin-left: 15px;
+}
+.create{
+  margin-left: 5px;
+}

@@ -1,0 +1,16 @@
+<form>
+  <mat-card-title>Novo Pedido</mat-card-title>
+  <mat-form-field>
+    <input matInput placeholder="SKU do Produto" [(ngModel)]="produto.sku"
+           name="sku">
+  </mat-form-field>
+  <div>
+    <button mat-raised-button (click)="buscarProdutoPeloSku($event)">Procurar Produto</button>
+    <button mat-raised-button color="primary">Salvar</button>
+  </div>
+  <button mat-raised-button (click)="create()" color="primary">
+    Finalizar Pedido
+  </button>
+</form>
+
+
