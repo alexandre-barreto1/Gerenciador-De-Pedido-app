@@ -1,26 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import {Pedidos} from "../pedidos.model";
-import {ClienteService} from "../../cliente/cliente.service";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
 import {PedidosService} from "../pedidos.service";
+import {PedidosDTO} from "../pedidos.dto";
 
 @Component({
   selector: 'app-pedidos-list',
   templateUrl: './pedidos-list.component.html',
   styleUrls: ['./pedidos-list.component.css']
 })
-export class PedidosListComponent implements OnInit {
-  pedidos: Pedidos[];
-  displayedColumns = ['nameCliente', 'totalCompra', 'dataCompra', 'produtos','action']
+export class PedidosListComponent implements OnInit{
+  pedidos: PedidosDTO[];
+
+  displayedColumns = ['nameCliente', 'totalCompra', 'dataCompra','nProdutos', 'produtos','action']
+  panelOpenState: false;
 
   constructor(private pedidosService: PedidosService) { }
 
   ngOnInit(): void {
     this.pedidosService.read().subscribe(pedidos =>
-      this.pedidos = pedidos)
+      this.pedidos = pedidos
+    )
+  }
+  deleteCliente(id: any) {
+
   }
 
-  deleteCliente(id: any) {
-    
-  }
+
 }

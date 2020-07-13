@@ -23,6 +23,7 @@ import { ProdutoCreateComponent } from './components/produto/produto-create/prod
 import { ProdutoUpdateComponent } from './components/produto/produto-update/produto-update.component';
 import { PedidosCreateComponent } from './components/pedidos/pedidos-create/pedidos-create.component';
 import { PedidosListComponent } from './components/pedidos/pedidos-list/pedidos-list.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { PedidosListComponent } from './components/pedidos/pedidos-list/pedidos-
     MatTableModule,
     HttpClientModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,16 +1,28 @@
 <form>
   <mat-card-title>Novo Pedido</mat-card-title>
   <mat-form-field>
-    <input matInput placeholder="SKU do Produto" [(ngModel)]="produto.sku"
-           name="sku">
+    <input matInput placeholder="Digite o CPF do Cliente" [(ngModel)]="cliente.cpf"
+           name="name">
   </mat-form-field>
-  <div>
-    <button mat-raised-button (click)="buscarProdutoPeloSku($event)">Procurar Produto</button>
-    <button mat-raised-button color="primary">Salvar</button>
+  <mat-form-field>
+    <input matInput placeholder="Digite o Sku do Produto" [(ngModel)]="produto.sku"
+           name="cpf">
+  </mat-form-field>
+  <button mat-raised-button (click)="buscarPedidoPeloProduto()" color="primary">Procurar Produto</button>
+  <div class="produto" *ngIf="produtoVisible">
+    <mat-card *ngFor="let produto of pedido.produtos">
+      Produto : {{produto.nome}}    Total da Compra : {{pedido.totalCompra}}
+    </mat-card>
   </div>
-  <button mat-raised-button (click)="create()" color="primary">
-    Finalizar Pedido
-  </button>
+
+  <mat-card>
+    * Atenção caso aja mais de um produto por pedido separe seus Sku por uma virgula.
+    Exemplo : xxx-xxx-xxx,yyy-yyy-yyy
+  </mat-card>
+
 </form>
+<button mat-raised-button (click)="create()" color="primary">
+  Finalizar
+</button>
 
 

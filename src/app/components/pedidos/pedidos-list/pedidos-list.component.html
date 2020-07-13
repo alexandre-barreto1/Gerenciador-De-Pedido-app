@@ -1,28 +1,57 @@
 <div class="mat-elevation-z8">
+  <div class="add-pedido">
+    Faça um pedido
+    <a routerLink="/pedido/create" class="create">
+      <i class="material-icons">
+        event
+      </i>
+    </a>
+  </div>
+
+
   <table mat-table [dataSource]="pedidos">
 
     <!-- Coluna do Nome -->
     <ng-container matColumnDef="nameCliente">
-      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <th mat-header-cell *matHeaderCellDef>Cliente</th>
       <td mat-cell *matCellDef="let row">{{row.cliente.nome}}</td>
     </ng-container>
 
     <!-- Coluna do Total da Compra -->
     <ng-container matColumnDef="totalCompra">
       <th mat-header-cell *matHeaderCellDef>Total da Compra</th>
-      <td mat-cell *matCellDef="let row">{{row.totalDaCompra}}</td>
+      <td mat-cell *matCellDef="let row">{{row.totalCompra}}</td>
     </ng-container>
 
     <!-- Data da Compra -->
     <ng-container matColumnDef="dataCompra">
       <th mat-header-cell *matHeaderCellDef>Data da Compra</th>
-      <td mat-cell *matCellDef="let row">{{row.dataDaCompra}}</td>
+      <td mat-cell *matCellDef="let row">{{row.dataCompra}}</td>
+    </ng-container>
+
+    <!-- N de Produtos -->
+    <ng-container matColumnDef="nProdutos" class="nProdutos">
+      <th mat-header-cell *matHeaderCellDef>Nº de Produtos</th>
+      <td mat-cell *matCellDef="let row">{{row.produtos.length}}</td>
     </ng-container>
 
     <!-- Produtos -->
     <ng-container matColumnDef="produtos">
       <th mat-header-cell *matHeaderCellDef>Produtos</th>
-      <td mat-cell *matCellDef="let row">{{row.produtos.nome}}</td>
+      <td mat-cell *matCellDef="let row">
+        <mat-accordion>
+          <mat-expansion-panel  class="tabela-produtos">
+        <mat-expansion-panel-header >
+          <mat-panel-title>
+            Ver Produtos {{panelOpenState ? '' : ''}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+            <ng-container *ngFor="let produto of row.produtos">
+              {{produto.nome}}
+            </ng-container>
+            </mat-expansion-panel>
+        </mat-accordion>
+      </td>
     </ng-container>
 
     <!-- Action Column -->

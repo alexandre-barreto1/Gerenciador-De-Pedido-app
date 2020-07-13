@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Pedidos} from "../pedidos.model";
 import {Produto} from "../../produto/produto.model";
 import {PedidosService} from "../pedidos.service";
+import {Cliente} from "../../cliente/cliente.model";
+import {PedidosDTO} from "../pedidos.dto";
 
 @Component({
   selector: 'app-pedidos-create',
@@ -9,11 +10,11 @@ import {PedidosService} from "../pedidos.service";
   styleUrls: ['./pedidos-create.component.css']
 })
 export class PedidosCreateComponent implements OnInit {
-  pedido: Pedidos ={
+  pedido: PedidosDTO ={
     cliente: null,
-    dataDaCompra: null,
-    produtos: [],
-    totalDaCompra: ""
+    totalCompra: "",
+    dataCompra: "",
+    produtos: null
   };
 
   produto: Produto ={
@@ -25,6 +26,13 @@ export class PedidosCreateComponent implements OnInit {
 
   }
 
+  cliente: Cliente ={
+    cpf: "",
+    dataNascimento: "",
+    nome: ""
+  };
+
+  produtoVisible = false;
   constructor(private pedidosService: PedidosService) { }
 
   ngOnInit(): void {
@@ -32,9 +40,14 @@ export class PedidosCreateComponent implements OnInit {
 
   create() {}
 
-  buscarProdutoPeloSku(sku: string): void{
-    this.pedidosService.buscarProdutoPeloSku(sku).subscribe(produto =>
-    this.produto = produto
-    )
-}
+  buscarPedidoPeloProduto(): void{
+    this.pedidosService.buscarPedidoPeloProduto(this.produto.sku).subscribe(pedido =>
+    this.isUndefined(pedido)
+    )}
+  private isUndefined(obj: any){
+    if (obj != undefined){
+      this.pedido = obj;
+      this.produtoVisible = true;
+    }
+  }
 }
