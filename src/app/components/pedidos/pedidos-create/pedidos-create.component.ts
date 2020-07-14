@@ -46,6 +46,7 @@ export class PedidosCreateComponent implements OnInit {
     )
     // this.pedidosService.buscarClientePeloCpf(this.cliente.cpf).subscribe(cliente=>
     // this.cliente = cliente)
+    this.visible = true;
   }
 
 
