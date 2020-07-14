@@ -2,27 +2,60 @@
   <mat-card-title>Novo Pedido</mat-card-title>
   <mat-form-field>
     <input matInput placeholder="Digite o CPF do Cliente" [(ngModel)]="cliente.cpf"
-           name="name">
+           name="cpf">
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="Digite o Sku do Produto" [(ngModel)]="produto.sku"
-           name="cpf">
+           name="sku">
   </mat-form-field>
-  <button mat-raised-button (click)="buscarPedidoPeloProduto()" color="primary">Procurar Produto</button>
-  <div class="produto" *ngIf="produtoVisible">
-    <mat-card *ngFor="let produto of pedido.produtos">
-      Produto : {{produto.nome}}    Total da Compra : {{pedido.totalCompra}}
-    </mat-card>
-  </div>
-
-  <mat-card>
-    * Atenção caso aja mais de um produto por pedido separe seus Sku por uma virgula.
-    Exemplo : xxx-xxx-xxx,yyy-yyy-yyy
-  </mat-card>
-
+  <button mat-raised-button (click)="buscar()" col/or="primary">Procurar Produto</button>
 </form>
-<button mat-raised-button (click)="create()" color="primary">
-  Finalizar
-</button>
+<table mat-table [dataSource]="pedido.produtos" class="mat-elevation-z8" *ngIf="visible">
+
+  <!-- Cliente Column -->
+<!--  <ng-container matColumnDef="cliente">-->
+<!--    <th mat-header-cell *matHeaderCellDef> Cliente </th>-->
+<!--    <td mat-cell *matCellDef="let element"> {{cliente.nome}} </td>-->
+<!--  </ng-container>-->
+
+  <!-- Produtos Column -->
+  <ng-container matColumnDef="produtos">
+    <th mat-header-cell *matHeaderCellDef> Produtos </th>
+    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+  </ng-container>
+
+  <!-- Descrição Column -->
+  <ng-container matColumnDef="descricao">
+    <th mat-header-cell *matHeaderCellDef> Descrição </th>
+    <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+  </ng-container>
+
+  <!-- Valor Column -->
+  <ng-container matColumnDef="valor">
+    <th mat-header-cell *matHeaderCellDef> Valor </th>
+    <td mat-cell *matCellDef="let element"> {{element.preco}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-card class="total" *ngIf="visible">
+  Total da Compra : R$: {{pedido.totalCompra}}
+</mat-card>
+
+<mat-card class="aviso" *ngIf="visible == false">
+  * Atenção caso aja mais de um produto por pedido separe seus Sku por uma virgula.
+  Exemplo : xxx-xxx-xxx,yyy-yyy-yyy
+</mat-card>
+<div class="buttons">
+  <button class="finalizar" mat-raised-button (click)="create()" color="primary">
+    Finalizar
+  </button>
+  <button *ngIf="visible" mat-raised-button (click)="clean()" color="primary">
+    Voltar
+  </button>
+</div>
+
 
 
