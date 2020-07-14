@@ -30,7 +30,7 @@ export class PedidosCreateComponent implements OnInit {
   dataNascimento: "",
   nome: ""
   };
-  displayedColumns: string[] = ['produtos', 'descricao', 'valor'];
+  displayedColumns: string[] = ['cliente','produtos', 'descricao', 'valor'];
 
   visible = false;
   constructor(private pedidosService: PedidosService) { }

@@ -8,15 +8,15 @@
     <input matInput placeholder="Digite o Sku do Produto" [(ngModel)]="produto.sku"
            name="sku">
   </mat-form-field>
-  <button mat-raised-button (click)="buscar()" col/or="primary">Procurar Produto</button>
+  <button mat-raised-button (click)="buscar()" color="primary">Procurar Produto</button>
 </form>
 <table mat-table [dataSource]="pedido.produtos" class="mat-elevation-z8" *ngIf="visible">
 
   <!-- Cliente Column -->
-<!--  <ng-container matColumnDef="cliente">-->
-<!--    <th mat-header-cell *matHeaderCellDef> Cliente </th>-->
-<!--    <td mat-cell *matCellDef="let element"> {{cliente.nome}} </td>-->
-<!--  </ng-container>-->
+  <ng-container matColumnDef="cliente">
+    <th mat-header-cell *matHeaderCellDef> Cliente </th>
+    <td mat-cell *matCellDef="let element"> {{cliente.nome}} </td>
+  </ng-container>
 
   <!-- Produtos Column -->
   <ng-container matColumnDef="produtos">
