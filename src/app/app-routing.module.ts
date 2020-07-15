@@ -8,6 +8,7 @@ import {ProdutoCreateComponent} from "./components/produto/produto-create/produt
 import {ProdutoUpdateComponent} from "./components/produto/produto-update/produto-update.component";
 import {PedidosCreateComponent} from "./components/pedidos/pedidos-create/pedidos-create.component";
 import {PedidosListComponent} from "./components/pedidos/pedidos-list/pedidos-list.component";
+import {PedidosUpdateComponent} from "./components/pedidos/pedidos-update/pedidos-update.component";
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: "pedidos",
     component: PedidosListComponent,
+  },
+  {
+    path: "pedidos/update/:id",
+    component: PedidosUpdateComponent,
   },
   {
     path: "cliente/update/:id",

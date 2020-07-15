@@ -24,6 +24,7 @@ import { ProdutoUpdateComponent } from './components/produto/produto-update/prod
 import { PedidosCreateComponent } from './components/pedidos/pedidos-create/pedidos-create.component';
 import { PedidosListComponent } from './components/pedidos/pedidos-list/pedidos-list.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { PedidosUpdateComponent } from './components/pedidos/pedidos-update/pedidos-update.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     ProdutoUpdateComponent,
     PedidosCreateComponent,
     PedidosListComponent,
+    PedidosUpdateComponent,
   ],
   imports: [
     BrowserModule,
