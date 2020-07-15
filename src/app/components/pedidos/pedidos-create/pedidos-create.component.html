@@ -15,7 +15,7 @@
   <!-- Cliente Column -->
   <ng-container matColumnDef="cliente">
     <th mat-header-cell *matHeaderCellDef> Cliente </th>
-    <td mat-cell *matCellDef="let element"> {{cliente.nome}} </td>
+    <td mat-cell *matCellDef="let element"> {{pedido.cliente.nome}} </td>
   </ng-container>
 
   <!-- Produtos Column -->
@@ -41,7 +41,7 @@
 </table>
 
 <mat-card class="total" *ngIf="visible">
-  Total da Compra : R$: {{pedido.totalCompra}}
+  Total da Compra : R$ {{pedido.totalCompra}}
 </mat-card>
 
 <mat-card class="aviso" *ngIf="visible == false">

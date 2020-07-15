@@ -11,7 +11,6 @@ import {Cliente} from "../../cliente/cliente.model";
 })
 export class PedidosCreateComponent implements OnInit {
 
-  produtos : Produto[];
   produto : Produto ={
     descricao: "",
     nome: "",
@@ -30,6 +29,7 @@ export class PedidosCreateComponent implements OnInit {
   dataNascimento: "",
   nome: ""
   };
+
   displayedColumns: string[] = ['cliente','produtos', 'descricao', 'valor'];
 
   visible = false;
@@ -38,19 +38,23 @@ export class PedidosCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  create() {}
+  create(): void {
+    this.pedidosService.save(this.pedido).subscribe();
+    this.clean();
+  }
 
   buscar(): void{
     this.pedidosService.buscarPedidoPeloProduto(this.produto.sku).subscribe(pedido =>
     this.pedido = pedido
     )
-    // this.pedidosService.buscarClientePeloCpf(this.cliente.cpf).subscribe(cliente=>
-    // this.cliente = cliente)
-    this.visible = true;
+    this.pedidosService.buscarClientePeloCpf(this.cliente.cpf).subscribe(cliente=>
+    this.pedido.cliente = cliente
+    )
+    this.visible = !this.visible;
   }
 
 
   clean() {
-  this.visible = false;
+    this.visible = !this.visible;
   }
 }

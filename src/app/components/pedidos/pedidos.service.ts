@@ -22,4 +22,8 @@ export class PedidosService {
   read(): Observable<PedidosDTO[]>{
     return this.http.get<PedidosDTO[]>("http://localhost:8080/pedido");
   }
+
+  save(pedido: PedidosDTO): Observable<PedidosDTO>{
+    return this.http.post<PedidosDTO>("http://localhost:8080/pedido",pedido);
+  }
 }
