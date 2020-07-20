@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class ClientesListComponent implements OnInit {
   clientes: Cliente[];
-  displayedColumns = ['name', 'cpf', 'dataNascimento', 'action','pedido']
+  displayedColumns = ['name', 'cpf', 'dataNascimento', 'action']
 
   constructor(private clienteService: ClienteService, private router: Router) { }
 
