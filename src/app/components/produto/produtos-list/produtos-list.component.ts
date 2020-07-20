@@ -19,8 +19,10 @@ export class ProdutosListComponent implements OnInit {
   }
 
   deleteProduto(id: number): void{
-    this.produtoService.delete(id).subscribe();
-    this.listarProdutos();
+    this.produtoService.delete(id).subscribe(del =>
+      this.listarProdutos()
+  );
+    this.produtoService.showMessage("Produto deletado com sucesso",false);
   }
 
   private listarProdutos(): void{

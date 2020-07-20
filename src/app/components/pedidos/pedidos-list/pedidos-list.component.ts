@@ -21,8 +21,10 @@ export class PedidosListComponent implements OnInit{
   }
 
   deletePedidos(id: number) {
-    this.pedidosService.delete(id).subscribe();
-    this.listarPedidos();
+    this.pedidosService.delete(id).subscribe(del =>
+      this.listarPedidos()
+  );
+    this.pedidosService.showMessage("Pedido deletado com sucesso", false)
   }
 
   listarPedidos(){

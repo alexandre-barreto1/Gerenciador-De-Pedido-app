@@ -25,6 +25,7 @@ import { PedidosCreateComponent } from './components/pedidos/pedidos-create/pedi
 import { PedidosListComponent } from './components/pedidos/pedidos-list/pedidos-list.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { PedidosUpdateComponent } from './components/pedidos/pedidos-update/pedidos-update.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -54,9 +55,11 @@ import { PedidosUpdateComponent } from './components/pedidos/pedidos-update/pedi
     HttpClientModule,
     MatCardModule,
     FormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

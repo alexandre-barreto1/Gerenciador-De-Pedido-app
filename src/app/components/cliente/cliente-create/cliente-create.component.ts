@@ -12,10 +12,10 @@ export class ClienteCreateComponent implements OnInit {
 
   constructor(private clienteService: ClienteService, private router: Router) { }
 
-  cliente: Cliente = {
-    id: null,
-    nome: '',
-    cpf: '',
+  cliente = new class implements Cliente {
+    id: null
+    nome: ''
+    cpf: ''
     dataNascimento:''
   };
 
@@ -23,8 +23,9 @@ export class ClienteCreateComponent implements OnInit {
   }
 
   create(): void{
-    this.clienteService.create(this.cliente).subscribe();
-    this.clean();
+      this.clienteService.create(this.cliente).subscribe(create =>
+        this.clean()
+      );
   }
 
   private clean(): void{
@@ -35,6 +36,6 @@ export class ClienteCreateComponent implements OnInit {
       cpf: ''
       dataNascimento:''
     };
+    this.clienteService.showMessage("Cliente criado com sucesso", false)
   }
-
 }

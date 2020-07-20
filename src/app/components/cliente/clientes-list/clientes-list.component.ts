@@ -19,15 +19,16 @@ export class ClientesListComponent implements OnInit {
   }
 
   deleteCliente(id: number): void{
-    this.clienteService.delete(id).subscribe();
-    this.listarClientes();
+    this.clienteService.delete(id).subscribe(del =>
+      this.listarClientes()
+    );
+    this.clienteService.showMessage("Cliente deletado com sucesso",false);
   }
 
-  private listarClientes(): void{
+  private listarClientes():void{
     this.clienteService.read().subscribe(clientes =>
-      this.clientes = clientes
+        this.clientes = clientes,
     )
     this.router.navigate((['/clientes']))
-}
-
+  }
 }

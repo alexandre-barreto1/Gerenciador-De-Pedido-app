@@ -12,20 +12,22 @@ export class ProdutoCreateComponent implements OnInit {
 
   constructor(private produtoService: ProdutoService, private router: Router) { }
 
-  produto: Produto = {
-    id: null,
-    sku: '',
-    nome: '',
-    descricao: '',
-    preco:'',
+  produto = new class implements Produto {
+    id: null
+    sku: ''
+    nome: ''
+    descricao: ''
+    preco:''
     quantidade: null
   };
+
   ngOnInit(): void {
   }
 
   create(): void{
-    this.produtoService.create(this.produto).subscribe();
-    this.clean();
+    this.produtoService.create(this.produto).subscribe(create =>
+      this.clean()
+  );
   }
 
   private clean(): void{
@@ -38,5 +40,6 @@ export class ProdutoCreateComponent implements OnInit {
       preco:''
       quantidade: null
     };
+    this.produtoService.showMessage("Produto criado com sucesso", false)
   }
 }

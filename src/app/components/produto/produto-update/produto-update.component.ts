@@ -9,14 +9,15 @@ import {Produto} from "../produto.model";
   styleUrls: ['./produto-update.component.css']
 })
 export class ProdutoUpdateComponent implements OnInit {
-  produto: Produto = {
-    id: null,
-    sku: '',
-    nome: '',
-    descricao: '',
-    preco: '',
+  produto = new class implements Produto {
+    id: null
+    sku: ''
+    nome: ''
+    descricao: ''
+    preco: ''
     quantidade: null
   };
+
   private id: number;
 
   constructor(private produtoService: ProdutoService, private router: Router,
@@ -28,8 +29,9 @@ export class ProdutoUpdateComponent implements OnInit {
   }
 
   update(): void {
-    this.produtoService.update(this.produto, this.id).subscribe();
-    this.clean();
+    this.produtoService.update(this.produto, this.id).subscribe(up =>
+      this.clean()
+  );
   }
 
   private clean(): void {
@@ -42,5 +44,6 @@ export class ProdutoUpdateComponent implements OnInit {
       preco: ''
       quantidade: null
     };
+    this.produtoService.showMessage("Produto atualizado com sucesso", false)
   }
 }

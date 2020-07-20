@@ -9,13 +9,14 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./cliente-update.component.css']
 })
 export class ClienteUpdateComponent implements OnInit {
-  cliente: Cliente = {
-    id: null,
-    nome: '',
-    cpf: '',
+  private id: number;
+
+  cliente = new class implements Cliente {
+    id: null
+    nome: ''
+    cpf: ''
     dataNascimento:''
   };
-  private id: number;
 
   constructor(private clienteService: ClienteService, private router: Router,
               private route: ActivatedRoute) { }
@@ -25,8 +26,9 @@ export class ClienteUpdateComponent implements OnInit {
   }
 
   update(): void{
-    this.clienteService.update(this.cliente,this.id).subscribe();
-    this.clean();
+    this.clienteService.update(this.cliente,this.id).subscribe(up=>
+      this.clean()
+  );
   }
   private clean(): void{
     this.router.navigate((['/cliente/update']));
@@ -36,6 +38,7 @@ export class ClienteUpdateComponent implements OnInit {
       cpf: ''
       dataNascimento:''
     };
+    this.clienteService.showMessage("Cliente atualizado com sucesso", false)
   }
 
 }
