@@ -21,11 +21,11 @@ export class PedidosCreateComponent implements OnInit {
     quantidade: null;
     sku: "";
   }
-  pedido : PedidosDTO ={
-    cliente: null,
-    totalCompra: "",
-    dataCompra: "",
-    produtos: null
+  pedido = new class implements PedidosDTO {
+    cliente: any;
+    totalCompra: "";
+    dataCompra: "";
+    produtos: any
   };
   cliente = new class implements Cliente {
     id: null
