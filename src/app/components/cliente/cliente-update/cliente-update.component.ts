@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Cliente} from "../cliente.model";
 import {ClienteService} from "../cliente.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ClienteFilter} from "../cliente-filter/cliente-filter";
 
 @Component({
   selector: 'app-cliente-update',
@@ -19,16 +20,18 @@ export class ClienteUpdateComponent implements OnInit {
   };
 
   constructor(private clienteService: ClienteService, private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute, private filter: ClienteFilter) { }
 
   ngOnInit(): void {
     this.id = +this.route.snapshot.paramMap.get('id');
   }
 
   update(): void{
-    this.clienteService.update(this.cliente,this.id).subscribe(up=>
-      this.clean()
-  );
+    if(this.filter.validarCliente(this.cliente) != null) {
+      this.clienteService.update(this.cliente,this.id).subscribe(up=>
+        this.clean()
+      )
+    }
   }
   private clean(): void{
     this.router.navigate((['/cliente/update']));

@@ -26,6 +26,7 @@ import { PedidosListComponent } from './components/pedidos/pedidos-list/pedidos-
 import {MatExpansionModule} from "@angular/material/expansion";
 import { PedidosUpdateComponent } from './components/pedidos/pedidos-update/pedidos-update.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {ClienteFilter} from "./components/cliente/cliente-filter/cliente-filter";
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatExpansionModule,
     MatSnackBarModule
   ],
-  providers: [],
+  providers: [ClienteFilter],
   bootstrap: [AppComponent]
 })
 

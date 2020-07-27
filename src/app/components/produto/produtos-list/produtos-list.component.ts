@@ -27,7 +27,7 @@ export class ProdutosListComponent implements OnInit {
 
   private listarProdutos(): void{
     this.produtoService.read().subscribe(produtos =>
-      this.produtos = produtos
+      this.produtos = produtos 
     )
     this.router.navigate((['/produtos']))
   }}
